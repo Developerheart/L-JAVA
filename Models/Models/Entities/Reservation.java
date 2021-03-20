@@ -1,8 +1,13 @@
 package Models.Entities;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class Reservation {
+
+
+    private static final SimpleDateFormat sfd = new SimpleDateFormat("dd/MM/yyyy");
 
     private Integer numberHome;
     private Date checkIn;
@@ -30,5 +35,22 @@ public class Reservation {
         return checkOut;
     }
 
+    public long Duration(){
+     long deference = checkOut.getTime() - checkIn.getTime();
+     return TimeUnit.DAYS.convert(deference, TimeUnit.MILLISECONDS);
+
+    }
+
+    public void updateDates(Date checkIn, Date checkOut){
+        this.checkIn = checkIn;
+        this.checkOut = checkOut;
+    }
+
+    @Override
+    public String toString(){
+        return "Room " + numberHome + ", " + "Chekin - " + sfd.format(checkIn) + " CheckOut - " + sfd.format(checkOut) +
+                " NIGHTS " + Duration();
+
+    }
 
 }
