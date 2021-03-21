@@ -6,6 +6,7 @@ import Models.exceptions.DomainException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -52,6 +53,9 @@ public class Main {
         }
         catch (DomainException error){
             System.out.println("Error in reservation: " + error.getMessage());
+        }
+        catch(InputMismatchException error){
+            System.out.print("Unexpected error ");
         }
         sc.close();
     }

@@ -5,6 +5,5 @@ public  class DomainException extends Exception{ //or extends RuntimeException
 
       public DomainException(String msg){
           super(msg);
-
       }
 }
